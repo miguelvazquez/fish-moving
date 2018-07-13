@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<style type="text/css" media="screen">
+	
+	body {
+		background-image: url(./images/bg1.jpg);
+	    background-repeat: no-repeat;
+	    background-size: cover;		
+	}
+	#miDiv {
+		width: 60%;
+		height: auto;
+		background-color: rgba(25,25,25, 0.2);
+		margin: 100px auto;
+		padding: 20px;
+	}
+	.text-content{
+		color: #f8f8f8;
+		text-align: justify;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="parallax-top-image" class="parallax-top-img parallax uk-vertical-align" style="min-height: 280px;" data-ratio="4" data-childanimation="false">
+		<div class="tm-parallax-teaser-container uk-vertical-align-middle">
+			<div id="miDiv" class="uk-margin-top-remove uk-margin-bottom-remove">
+				<div class="text-content">
+					<div style="position: relative;">
+						<!--<img alt="fondo agua" src="images/bg-alpha-04.png" height="318" width="555" />-->
+					</div>
+					<div id="moviendose" style="position: relative;">
+						<img src="images/pez-L2R.png" style="z-index: 20;" alt="como pez en el agua" title="Consulta nuestros trabajos" id="imageFloating" width="90" height="55" />
+					</div>
+					<p>&nbsp;</p>
+					<p>
+						<strong>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</strong>.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+					</p>
+					<p>&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	function ejecutar() {
+		var img = $("#imageFloating");
+		var div = $("#miDiv");
+		posicion_miDiv = $("#miDiv").position();
+		posicion_miDiv.top;
+		posicion_miDiv.left;
+		inicio_top = /*posicion_miDiv.top +*/
+			(Math.random() * (div.height() - img.height() - 1));
+		inicio_left = /*posicion_miDiv.left +*/
+			(Math.random() * (div.width() - img.width() - 1));
+		//alert(inicio_left_previo + " - " + inicio_left);
+		if (inicio_left_previo > inicio_left) {
+			img.attr("src", "images/pez-R2L.png");
+		} else {
+			img.attr("src", "images/pez-L2R.png");
+		}
+		inicio_left_previo = inicio_left;
+		var elemento = $("#moviendose");
+		//.animate( properties [, duration ] [, easing ] [, complete ] )
+		$("#moviendose").animate({
+			'top': inicio_top + 'px',
+			'left': inicio_left + 'px'
+		}, velocidad, "swing", function() {
+			ejecutar();
+		});
+	}
+
+	function ejecutar2() {
+		//alert("vamos");
+		//ejecutar();
+	}
+	$(document).ready(function() {
+		posicion = $("#moviendose").position();
+		inicio_top = posicion.top;
+		inicio_left = posicion.left;
+		inicio_left_previo = inicio_left;
+		inicio_top_previo = inicio_top;
+		velocidad = 4000;
+		ejecutar();
+		$("#imageFloating").click(function(event) {
+			//window.location.href = "./portfolio-de-trabajos.html";
+			/*var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ','
+         + (Math.floor((256-199)*Math.random()) + 200) + ','
+         + (Math.floor((256-199)*Math.random()) + 200) + ')';
+      $("#miDiv").css("background-color", hue); */
+		});
+		/*$("#imageFloating").mouseover( function (event) {
+        ejecutar();
+    });*/
+	});
+	</script>
+</body>
+
+</html>
